@@ -1,0 +1,46 @@
+###Get a  all emps
+GET http://localhost:3000/emps
+
+### Create a empl
+POST http://localhost:3000/emps/create
+Content-Type: application/json
+
+{
+  "first_name": "Ganesh",
+  "last_name": "naik",
+  "department": "IT",
+  "Address": "123 Main St",
+  "dob": "2004-09-07",
+  "salary": "48500"
+}
+
+
+### GET  by id
+GET http://localhost:3000/emps/2
+
+### Update a emp by id
+PUT  http://localhost:3000/emps/update/15
+Content-Type: application/json
+
+{
+  "first_name": "sachin",
+  "last_name": "tekar",
+  "department": "CS",
+  "Address": "456 Elm St",
+  "dob": "1995-01-01",
+  "salary": "55000"
+}
+
+
+### Delete emp by id
+DELETE  http://localhost:3000/emps/remove/1
+
+### get by id
+GET http://localhost:3000/emps/2
+
+
+### search by DEPT
+GET http://localhost:3000/emps/department/ch
+
+### sort salary
+GET http://localhost:3000/emps/sort/salary
