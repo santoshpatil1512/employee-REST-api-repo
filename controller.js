@@ -20,7 +20,7 @@ const db = require('./database');
 const getAllEmployees = async (req, res) => {
     try {
         const selectQuery = `SELECT * FROM employees`;
-        const [rows, fields] = await db.query(selectQuery);
+        const rows = await db.query(selectQuery);
         res.json(rows);
     } catch (error) {
         console.error(error);

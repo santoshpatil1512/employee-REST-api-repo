@@ -6,13 +6,13 @@ router.post('/create', empController.createEmployee );
 
 router.get('/', empController.getAllEmployees);
 
-router.put('/update/:employee_id',empController.updateEmployee );
+router.put('/update/:employee_id', empController.updateEmployee );
 
-router.delete('/remove/:employee_id',empController.deleteEmployee );
+router.delete('/remove/:employee_id', empController.deleteEmployee );
 
-router.get('/:employee_id',empController.getEmployeeById );
+router.get('/:employee_id', empController.getEmployeeById );
 
-router.get('/department/:department',empController.searchByDept );
+router.get('/department/:department', empController.searchByDept );
 
 router.get('/sort/salary', empController.salarySort );
 

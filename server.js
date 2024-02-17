@@ -10,4 +10,4 @@ app.use('/emps', employeeRoutes)
 
 app.listen(PORT, ()=>{
     console.log(`Server is running on port ${PORT}`);
-})
+})  
