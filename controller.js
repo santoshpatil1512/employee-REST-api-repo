@@ -9,7 +9,7 @@ const db = require('./database');
 
         const values = [employee_id, first_name, last_name, department, Address, dob, salary];
 
-        await db.query(insertQuery, values);
+        // await db.query(insertQuery, values);
         const result = await db.query(insertQuery, values);
         res.json({ message: 'Employee created successfully.', result });
     } catch (error) {
@@ -20,8 +20,9 @@ const db = require('./database');
 const getAllEmployees = async (req, res) => {
     try {
         const selectQuery = `SELECT * FROM employees`;
-        const rows = await db.query(selectQuery);
+        const [rows] = await db.query(selectQuery);
         res.json(rows);
+        console.log(rows);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Error fetching employees.' });
@@ -55,7 +56,7 @@ const deleteEmployee = async (req, res) => {
         const { employee_id } = req.params;
         const deleteQuery = `DELETE FROM employees WHERE employee_id = ?`;
 
-        const result = await db.query(deleteQuery, [employee_id]);
+        const result = await db.query(deleteQuery, [ ]);
         if (result[0].affectedRows === 0) {
             return res.status(404).json({ error: 'Employee not found.' });
         }
@@ -71,7 +72,7 @@ const getEmployeeById = async (req, res) => {
     try {
         const { employee_id } = req.params;
         const selectQuery = `SELECT * FROM employees WHERE employee_id = ?`;
-        const rows = await db.query(selectQuery, [employee_id]);
+        const [rows] = await db.query(selectQuery, [employee_id]);
 
         if (rows.length === 0) {
             return res.status(404).json({ error: 'Employee not found.' });
@@ -88,7 +89,7 @@ const searchByDept = async (req, res) => {
     try {
         const { department } = req.params;
         const selectQuery = `SELECT * FROM employees WHERE department = ?`;
-        const rows = await db.query(selectQuery, [department]);
+        const [rows] = await db.query(selectQuery, [department]);
         res.json(rows);
     } catch (error) {
         console.error(error);
